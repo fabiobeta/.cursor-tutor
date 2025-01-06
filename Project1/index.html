@@ -242,10 +242,12 @@
         }
 
         .dice-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             margin: 15px 0;
-            padding: 10px;
-            max-height: 100px;
-            overflow-y: auto;
+            width: 100%;
+            min-height: 50px; /* Minimum height even when empty */
         }
 
         .dice-pool-item {
@@ -783,6 +785,217 @@
         
         .history-entry:active {
             transform: scale(0.98);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Base styles */
+            body {
+                font-size: 18px;
+                padding: 12px;
+                margin: 0;
+            }
+
+            /* Container layout */
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 12px;
+                max-width: 100%;
+            }
+
+            /* Sections */
+            .dice-section,
+            .controls-section,
+            .results-section {
+                width: 100%;
+                margin: 0;
+            }
+
+            /* Dice pool display */
+            .dice-pool {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                padding: 10px 0;
+                margin: 10px 0 20px 0;
+            }
+
+            .dice-button {
+                padding: 12px 16px;
+                font-size: 18px;
+                min-width: auto;
+                flex: 0 1 auto;
+            }
+
+            .remove-dice {
+                width: 28px;
+                height: 28px;
+                font-size: 20px;
+            }
+
+            /* Controls */
+            .roll-options {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .roll-option-group {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .modifier-label {
+                font-size: 18px;
+                min-width: 80px;
+            }
+
+            select, input[type="number"] {
+                font-size: 18px;
+                padding: 8px;
+                width: 100%;
+                max-width: none;
+            }
+
+            /* D20 settings section */
+            .d20-settings {
+                padding: 15px;
+                margin: 10px 0;
+            }
+
+            .advantage-buttons {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .adv-button {
+                padding: 12px 8px;
+                font-size: 16px;
+                white-space: nowrap;
+            }
+
+            /* Results */
+            #result {
+                font-size: 24px;
+                padding: 15px;
+                text-align: center;
+            }
+
+            .roll-main {
+                font-size: 1.2em;
+            }
+
+            .roll-details {
+                font-size: 0.7em;
+            }
+
+            /* Chart */
+            #chartContainer {
+                height: 200px;
+                margin: 15px 0;
+            }
+
+            /* History */
+            .history-section {
+                max-height: 200px;
+                margin-top: 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 15px;
+            }
+
+            .history-entry {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            /* Buttons */
+            .action-button {
+                padding: 15px;
+                font-size: 18px;
+                margin: 10px 0;
+            }
+
+            /* Probability Summary */
+            .probability-summary {
+                font-size: 18px;
+                padding: 15px;
+                margin: 10px 0;
+            }
+
+            /* Toast notifications */
+            .toast {
+                font-size: 16px;
+                padding: 15px 25px;
+                bottom: 30px;
+            }
+        }
+
+        /* Additional optimization for very small screens */
+        @media (max-width: 380px) {
+            .dice-button {
+                min-width: calc(100% - 8px);
+            }
+
+            .advantage-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                font-size: 16px;
+            }
+        }
+
+        /* Update dice pool styles */
+        .dice-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+            width: 100%;
+            min-height: 50px; /* Minimum height even when empty */
+        }
+
+        .dice-button {
+            flex: 0 1 auto; /* Don't force grow, allow natural size */
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin: 0; /* Remove margin, using gap instead */
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        /* Mobile optimization for dice pool */
+        @media (max-width: 768px) {
+            .dice-pool {
+                gap: 12px;
+                padding: 10px 0;
+                margin: 10px 0 20px 0;
+            }
+
+            .dice-button {
+                padding: 12px 16px;
+                font-size: 18px;
+                /* Remove min-width constraint to allow natural sizing */
+                min-width: auto;
+                flex: 0 1 auto;
+            }
+
+            /* Container for dice section */
+            .dice-section {
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
